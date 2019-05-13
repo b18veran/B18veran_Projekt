@@ -76,7 +76,9 @@ public class MainActivity extends AppCompatActivity {
             return true;
         }
         if(id == R.id.action_settings){
-
+            String Om = "Målgruppen är ...";
+            //Skriver ut Toasten.
+            Toast.makeText(MainActivity.this, Om, Toast.LENGTH_SHORT).show();
             return true;
         }
         return super.onOptionsItemSelected(item);
