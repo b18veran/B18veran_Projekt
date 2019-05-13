@@ -78,7 +78,7 @@ public class MainActivity extends AppCompatActivity {
         if(id == R.id.action_settings){
             String Om = "Målgruppen är gymnaster som är både nybörjare i gymnastik samt de lite mer erfarna gymnasterna.";
             //Skriver ut Toasten.
-            Toast.makeText(MainActivity.this, Om, Toast.LENGTH_SHORT).show();
+            Toast.makeText(MainActivity.this, Om, Toast.LENGTH_LONG).show();
             return true;
         }
         return super.onOptionsItemSelected(item);

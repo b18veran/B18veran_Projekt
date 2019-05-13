@@ -12,9 +12,9 @@ public class GymnastDetails extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.gymnast);
         Intent intent = getIntent();
-        String Mountain = intent.getStringExtra(MainActivity.EXTRA_MESSAGE);
+        String Gymnaster = intent.getStringExtra(MainActivity.EXTRA_MESSAGE);
 
         TextView namn = findViewById(R.id.textView);
-        namn.setText(Mountain);
+        namn.setText(Gymnaster);
     }
 }
