@@ -1,5 +1,6 @@
 package com.example.b18veran_projekt;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -28,23 +29,10 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
-
-
-// Create a new class, Mountain, that can hold your JSON data
-
-// Create a ListView as in "Assignment 1 - Toast and ListView"
-
-// Retrieve data from Internet service using AsyncTask and the included networking code
-
-// Parse the retrieved JSON and update the ListView adapter
-
-// Implement a "refresh" functionality using Android's menu system
-
-
 public class MainActivity extends AppCompatActivity {
-    private String[] mountainNames = {"Matterhorn","Mont Blanc","Denali"};
-    private String[] mountainLocations = {"Alps","Alps","Alaska"};
-    private int[] mountainHeights ={4478,4808,6190};
+
+    private String[] Extra_Message;
+    public static final String EXTRA_MESSAGE = "Test";
     // Create ArrayLists from the raw data above and use these lists when populating your ListView.
     private ArrayList<String> listData;
     private ArrayAdapter<Gymnaster> adapter;
@@ -53,9 +41,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         new FetchData().execute();
-
         setContentView(R.layout.activity_main);
-        listData=new ArrayList<>(Arrays.asList(mountainNames));
+
         adapter= new ArrayAdapter<Gymnaster>(this, R.layout. list_item_textview, R.id.list_item_textview);
 
         ListView my_listview=(ListView) findViewById(R.id.my_listview);
@@ -66,18 +53,20 @@ public class MainActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int i, long id) {
                 //Skapar en variabel som hämtar datan som ska fram i toasten.
                 String test = adapter.getItem(i).info();
-                Toast.makeText(MainActivity.this, test, Toast.LENGTH_SHORT).show();
+                //Skriver ut Toasten.
+                //Toast.makeText(MainActivity.this, test, Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent (getApplicationContext(),GymnastDetails.class);
+                String allt = adapter.getItem(i).info();
+                intent.putExtra(EXTRA_MESSAGE,allt);
+                startActivity(intent);
             }
         });
-
     }
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu){
         getMenuInflater(). inflate(R.menu.menu_main, menu);
         return true;
     }
-
     @Override
     public boolean onOptionsItemSelected(MenuItem item){
         int id = item.getItemId();
@@ -86,11 +75,12 @@ public class MainActivity extends AppCompatActivity {
             adapter.clear();
             return true;
         }
+        if(id == R.id.action_settings){
+
+            return true;
+        }
         return super.onOptionsItemSelected(item);
     }
-
-
-
     private class FetchData extends AsyncTask<Void,Void,String>{
         @Override
         protected String doInBackground(Void... params) {
@@ -127,7 +117,6 @@ public class MainActivity extends AppCompatActivity {
                     // buffer for debugging.
                     buffer.append(line + "\n");
                 }
-
                 if (buffer.length() == 0) {
                     // Stream was empty.  No point in parsing.
                     return null;
@@ -157,11 +146,6 @@ public class MainActivity extends AppCompatActivity {
             super.onPostExecute(o);
             Log.d("veronica", "DataFetched:"+o);
 
-            // This code executes after we have received our data. The String object o holds
-            // the un-parsed JSON string or is null if we had an IOException during the fetch.
-
-            // Implement a parsing code that loops through the entire JSON and creates objects
-            // of our newly created Mountain class.
             try {
                 JSONArray veronicaarray = new JSONArray(o);
 
@@ -173,11 +157,6 @@ public class MainActivity extends AppCompatActivity {
                     Log.d("veronica", ""+ veronicaobject.getInt("size"));
                     Log.d("veronica", veronicaobject.getString("company"));
                     Log.d("veronica", veronicaobject.getString("auxdata"));
-                    String n = veronicaobject.getString("name");
-                    String l = veronicaobject.getString("location");
-                    String s = veronicaobject.getString("company");
-                    String a = veronicaobject.getString("auxdata");
-                    int h = 1;
 
                     Gymnaster m = new Gymnaster(veronicaobject.getString("name"),veronicaobject.getString("location"), veronicaobject.getInt("size"), veronicaobject.getString("company"), veronicaobject.getString("auxdata"));
                     Log.d("veronica", m.toString());
