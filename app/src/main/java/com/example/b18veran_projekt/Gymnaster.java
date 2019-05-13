@@ -1,59 +1,63 @@
 package com.example.b18veran_projekt;
 
 public class Gymnaster {
+    private String ID;
     private String name;
     private String location;
-    private int height;
     private String company;
     private String auxdata;
+    private String category;
 
     public Gymnaster()
     {
-        name="Saknar namn";
-        location="Saknar plats";
-        height=-1;
-        company="Saknar sport";
-        auxdata="Saknar information";
+        ID="Saknar ID";
+        name="Saknar övning";
+        location="Saknar övning";
+        company="Saknar övning";
+        auxdata="Saknar övning";
+        category="Saknar övning";
     }
-    public Gymnaster(String n, String l, int h, String s, String a)
+    public Gymnaster(String n,String u, String l, String s, String a, String c)
     {
-        name=n;
-        location=l;
-        height=h;
-        company=s;
-        auxdata=a;
+        ID = n;
+        name = u;
+        location = l;
+        company = s;
+        auxdata = a;
+        category = c;
     }
     public String info()
     {
         String tmp=new String();
-        tmp+="Name: " + name+"\n"+"Location: "+ location+"\n"+ "Year of birth: "+ height+"\n"+ "Sport: "+ company+"\n"+ "Info: "+ auxdata;
+        tmp+=ID+"\n"+"\n"+"1. "+name+"\n"+"\n"+ "2. "+ location+"\n"+"\n"+ "3. "+ company+"\n"+"\n"+ "4. "+ auxdata+"\n"+"\n"+ "*. "+ category;
         return tmp;
     }
-    public void setName(String n)
+    public void setID(String n)
     {
-        name=n;
+        ID=n;
     }
 
-    public String getName()
+    public String getID()
     {
-        return name;
+        return ID;
     }
     public String getLocation()
     {
         return location;
     }
-    public int getHeight()
-    {
-        return height;
-    }
+
     public String getCompany()
     {
         return company;
     }
+    public String getName()
+    {
+        return ID;
+    }
 
     @Override
     public String toString(){
-        return name;
+        return ID;
     }
 }
 

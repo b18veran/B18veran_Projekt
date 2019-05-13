@@ -62,7 +62,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu){
         getMenuInflater(). inflate(R.menu.menu_main, menu);
@@ -77,7 +76,7 @@ public class MainActivity extends AppCompatActivity {
             return true;
         }
         if(id == R.id.action_settings){
-            String Om = "Målgruppen är ...";
+            String Om = "Målgruppen är gymnaster som är både nybörjare i gymnastik samt de lite mer erfarna gymnasterna.";
             //Skriver ut Toasten.
             Toast.makeText(MainActivity.this, Om, Toast.LENGTH_SHORT).show();
             return true;
@@ -155,13 +154,15 @@ public class MainActivity extends AppCompatActivity {
                 for(int i=0; i < veronicaarray.length(); i++){
                     Log.d("veronica", "element 0"+veronicaarray.get(i).toString());
                     JSONObject veronicaobject = veronicaarray.getJSONObject(i);
+                    Log.d("veronica", veronicaobject.getString("ID"));
                     Log.d("veronica", veronicaobject.getString("name"));
                     Log.d("veronica", veronicaobject.getString("location"));
-                    Log.d("veronica", ""+ veronicaobject.getInt("size"));
                     Log.d("veronica", veronicaobject.getString("company"));
                     Log.d("veronica", veronicaobject.getString("auxdata"));
+                    Log.d("veronica", veronicaobject.getString("category"));
 
-                    Gymnaster m = new Gymnaster(veronicaobject.getString("name"),veronicaobject.getString("location"), veronicaobject.getInt("size"), veronicaobject.getString("company"), veronicaobject.getString("auxdata"));
+                    Gymnaster m = new Gymnaster(veronicaobject.getString("ID"),veronicaobject.getString("name"), veronicaobject.getString("location"),
+                            veronicaobject.getString("company"), veronicaobject.getString("auxdata"), veronicaobject.getString("category"));
                     Log.d("veronica", m.toString());
                     adapter.add(m);
                 }
