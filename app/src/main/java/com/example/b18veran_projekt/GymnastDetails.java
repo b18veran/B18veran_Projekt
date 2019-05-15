@@ -9,6 +9,7 @@ public class GymnastDetails extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        setTitle("Övningar");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.gymnast);
         Intent intent = getIntent();

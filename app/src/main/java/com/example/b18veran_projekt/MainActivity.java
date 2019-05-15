@@ -30,18 +30,20 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
 public class MainActivity extends AppCompatActivity {
-
     private String[] Extra_Message;
     public static final String EXTRA_MESSAGE = "Test";
     // Create ArrayLists from the raw data above and use these lists when populating your ListView.
     private ArrayList<String> listData;
     private ArrayAdapter<Gymnaster> adapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setTitle("Gymnastik");
 
         new FetchData().execute();
         setContentView(R.layout.activity_main);
+
 
         adapter= new ArrayAdapter<Gymnaster>(this, R.layout. list_item_textview, R.id.list_item_textview);
 
@@ -53,8 +55,6 @@ public class MainActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int i, long id) {
                 //Skapar en variabel som hämtar datan som ska fram i toasten.
                 String test = adapter.getItem(i).info();
-                //Skriver ut Toasten.
-                //Toast.makeText(MainActivity.this, test, Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent (getApplicationContext(),GymnastDetails.class);
                 String allt = adapter.getItem(i).info();
                 intent.putExtra(EXTRA_MESSAGE,allt);
@@ -76,7 +76,8 @@ public class MainActivity extends AppCompatActivity {
             return true;
         }
         if(id == R.id.action_settings){
-            String Om = "Målgruppen är gymnaster som är både nybörjare i gymnastik samt de lite mer erfarna gymnasterna.";
+            //String Om = "Målgruppen är gymnaster som är både nybörjare i gymnastik samt de lite mer erfarna gymnasterna.";
+            String Om = "Målgrupp: Tränare samt gymnater på grundnivå.";
             //Skriver ut Toasten.
             Toast.makeText(MainActivity.this, Om, Toast.LENGTH_LONG).show();
             return true;

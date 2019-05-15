@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:id="@+id/list_item_textview"
     android:padding="16dp"
-    android:textSize="16dp"
+    android:textSize="18dp"
     android:fontFamily="sans-serif"
     >
 </TextView>

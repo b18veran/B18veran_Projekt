@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">B18veran_Projekt</string>
-    <string name="action_settings">About</string>
-    <string name="action_refresh">Refresh</string>
+    <string name="app_name">B18veran-Projekt</string>
+    <string name="action_settings">Målgrupp</string>
+    <string name="action_refresh">Uppdatera</string>
 </resources>
