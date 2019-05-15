@@ -29,7 +29,13 @@ public class Gymnaster {
     public String info()
     {
         String tmp=new String();
-        tmp+=ID+"\n"+"\n"+"1. "+name+"\n"+"\n"+ "2. "+ location+"\n"+"\n"+ "3. "+ company+"\n"+"\n"+ "4. "+ auxdata+"\n"+"\n"+ "* "+ category;
+        tmp+=ID;
+        return tmp;
+    }
+    public String ovningar()
+    {
+        String tmp=new String();
+        tmp+="1. "+name+"\n"+"\n"+ "2. "+ location+"\n"+"\n"+ "3. "+ company+"\n"+"\n"+ "4. "+ auxdata+"\n"+"\n"+ "* "+ category;
         return tmp;
     }
     public void setID(String n)

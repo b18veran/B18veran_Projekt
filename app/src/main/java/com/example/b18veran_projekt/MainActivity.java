@@ -32,6 +32,7 @@ import java.util.Arrays;
 public class MainActivity extends AppCompatActivity {
     private String[] Extra_Message;
     public static final String EXTRA_MESSAGE = "Test";
+    public static final String EXTRA_MESSAGE2 = "Test2";
     // Create ArrayLists from the raw data above and use these lists when populating your ListView.
     private ArrayList<String> listData;
     private ArrayAdapter<Gymnaster> adapter;
@@ -57,7 +58,9 @@ public class MainActivity extends AppCompatActivity {
                 String test = adapter.getItem(i).info();
                 Intent intent = new Intent (getApplicationContext(),GymnastDetails.class);
                 String allt = adapter.getItem(i).info();
+                String allt2 = adapter.getItem(i).ovningar();
                 intent.putExtra(EXTRA_MESSAGE,allt);
+                intent.putExtra(EXTRA_MESSAGE2,allt2);
                 startActivity(intent);
             }
         });

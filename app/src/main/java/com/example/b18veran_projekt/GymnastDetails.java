@@ -14,8 +14,11 @@ public class GymnastDetails extends AppCompatActivity {
         setContentView(R.layout.gymnast);
         Intent intent = getIntent();
         String Gymnaster = intent.getStringExtra(MainActivity.EXTRA_MESSAGE);
+        String Gymnaster2 = intent.getStringExtra(MainActivity.EXTRA_MESSAGE2);
 
         TextView namn = findViewById(R.id.textView);
+        TextView namn2 = findViewById(R.id.textView2);
         namn.setText(Gymnaster);
+        namn2.setText(Gymnaster2);
     }
 }
